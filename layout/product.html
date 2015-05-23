@@ -1,0 +1,42 @@
+﻿<iframe src="slideshow/wowslider-howto.html" style="width:100%;height:363px;max-width:100%;overflow:hidden;border:none;padding:0;margin:0 auto; background-color: black;" marginheight="0" marginwidth="0"></iframe>
+<div class="panel panel-info" style="background-color: #C8C8C8      ;">
+    <div class="panel-heading" style="background-color: #404040      ;">
+        <h3 class="panel-title" style="color: white;font-family: Georgia; ">
+            <strong><span class=" glyphicon glyphicon-th-large"></span>
+                SẢN PHẨM PHỔ BIẾN
+            </strong>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-inline" id="general"></ul>
+        <ul class="pagination pull-right" id="general_page">
+        </ul>
+    </div>
+</div>
+<div class="panel panel-info" style="background-color: #C8C8C8      ;">
+    <div class="panel-heading" style="background-color: #404040      ;">
+        <h3 class="panel-title" style="color: white; font-family: Georgia; ">
+            <strong><span style="color: white;" class=" glyphicon glyphicon-star-empty"></span>
+                SẢN PHẨM BÁN CHẠY
+            </strong>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <ul id="hot" class="list-inline"></ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        product("general", "sql.php?product=123");
+        product("hot", "sql.php?product=123");
+        manufacter("manufacter", "sql.php?manufacture=123");
+        cagetory("cagetory", "sql.php?cagetory=123");
+		//$("#iframe")[0].style.width = $(".col-lg-8").width() + "px";
+		//$("#iframe")[0].style.height = "300px";
+    });
+
+	/*window.onresize = function(e){
+		$("#iframe")[0].style.width = $(".col-lg-8").width();
+		$("#iframe")[0].style.width = (".col-lg-8").width() * 411 / 640;
+	}*/
+</script>

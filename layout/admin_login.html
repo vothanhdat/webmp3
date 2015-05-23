@@ -1,0 +1,43 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color: blue;">
+            <strong>
+                Administrator Login Panel
+            </strong>
+        </h3>
+    </div>
+    <div class="panel-body">
+
+        <form name="login" action="" method="post">
+            <table width="280" border="0">
+                <tr>
+                    <td>User :</td>
+                    <td><input type="text" name="user"></td>
+                </tr>
+                <tr>
+                    <td>PassWord :</td>
+                    <td><input type="password" name="pass"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="login" value="LOGIN" onclick=" DoSubmit() "></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+
+        <script src="admin/md5.js"></script>
+        <script>
+            console.log(token);
+            function DoSubmit() {
+                var prepaire = document.login.pass.value + CryptoJS.MD5(token);
+                document.login.pass.value = CryptoJS.MD5(prepaire);
+                return true;
+            }
+        </script>
+    </div>
+
+</div>

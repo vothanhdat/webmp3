@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>	</title>
+
+    <!--BOOTSTRAP-->    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+
+<!--<style>
+body {
+	background-color:#CEE1E8;
+    background-size: 100%;
+	background-attachment: scroll;
+	overflow: scroll;
+	color:white;
+	
+}
+.pos_fixed {
+    margin-left: 400px;
+	padding:20px;
+	width:500px; 
+	height:300px;
+	opacity:0.8;
+	background-color:#031920;
+	background-position:center;
+}
+#icity{
+	margin-left: 0px;
+}
+@media screen and (max-width: 700px) {
+    body {
+        background-color: #031920;
+    }
+	.pos_fixed{
+		width:400px;
+		padding:0 0 0 0;
+		margin-left:0;
+	}
+}
+</style>-->
+
+<script>
+function formValidation()  
+{  
+	var uid = document.registration.hoten;  
+	var passid = document.registration.password;  
+	var birthid = document.registration.time;  
+	var aboutid = document.registration.about;  
+	var ucity = document.registration.city;  
+	var uemail = document.registration.email;  
+	var umsex = document.registration.male;  
+	var ufsex = document.registration.female; 
+	if(userid_validation(uid,2,30))  
+		{  
+			if(userid_validation(fid,2,20))  
+				{  
+					if(ValidateEmail(uemail))
+						{
+							 if(userid_validation(passid,6,20))   
+								{  
+									if(validsex(umsex,ufsex)) 
+										{   
+											if(cityselect(ucity))  
+												{
+													
+													if(timeselect(birthid))
+													{}
+												}   
+										}  
+								}  
+						} 
+				}
+		}  
+return false;  
+  
+} 
+function userid_validation(uid,mx,my)  
+	{  
+		var uid_len = uid.value.length;  
+		if (uid_len == 0 || uid_len >= my || uid_len < mx)  
+			{  
+				alert("User Id should not be empty / length be between "+mx+" to "+my);  
+				uid.focus();  
+				return false;  
+			}  
+	return true;  
+	}  
+	
+function passid_validation(passid,mx,my)  
+	{  
+		var passid_len = passid.value.length;  
+		if (passid_len == 0 ||passid_len >= my || passid_len < mx)  
+			{  
+				alert("Password should not be empty / length be between "+mx+" to "+my);  
+				passid.focus();  
+				return false;  
+			}  
+		return true;  
+	}  
+	
+function timeselect(birthid) {
+		if(birthid.value == "2015-04-09")  
+			{  
+				alert('Select your birthday from the list');  
+				birthid.focus();  
+				return false;  
+			}  
+		else  
+			{  
+				alert('Form Succesfully Submitted');  
+				window.location.reload()  
+				return true;  
+			}  
+	} 
+function cityselect(ucity)  
+	{  
+		if(ucity.value == "Default")  
+			{  
+				alert('Select your city from the list');  
+				ucity.focus();  
+				return false;  
+			}  
+		else  
+			{  
+				return true;  
+			}  
+	}  
+
+function ValidateEmail(uemail)  
+	{  
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+		if(uemail.value.match(mailformat))  
+			{  
+				return true;  
+			}  
+		else  
+			{  
+				alert("You have entered an invalid email address!");  
+				uemail.focus();  
+		return false;  
+			}  
+	} 
+
+function validsex(umsex,ufsex)  
+	{  
+		if(umsex.checked || ufsex.checked)  
+			{  
+				
+				return true; 
+			}  
+		else  
+			{  
+				alert('Select Male/Female');  
+				umsex.focus();  
+				return false;   
+			}  
+	}  
+</script>
+
+   
+</head>
+
+<body>
+    <!--<form class="form-horizontal" name='registration' onsubmit="return formValidation();">
+        <div class="form-group">
+            <h2> Đặt hàng </h2>
+            <table>
+                <tr>
+                    <td> <a onclick="document.getElementById('hoten').focus()"> <label> Họ và tên*</label> </a> </td>
+                    <td> <input type="text" name="hoten" id="hoten" required /> </td>
+                </tr>
+                <tr>
+                    <td>Giới tính</td>
+                    <td>
+
+                        <label for="male"><a>Nam</a></label>
+                        <input type="radio" name="sex" id="male" value="male">
+                        <label for="female"><a>Nữ</a></label>
+                        <input type="radio" name="sex" id="female" value="female">
+                    </td>
+                </tr>
+                <tr>
+                    <td> <a onclick="document.getElementById('email').focus()"> <label> Email* </label> </a> </td>
+                    <td> <input type="email" name="email" id="email" required /></td>
+                </tr>
+                <tr>
+                    <td> Địa chỉ </td>
+                    <td>
+                        <select id="city">
+                            <option value="saigon">Hồ Chí Minh</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="icity">
+                            <option value="quan1">Quận 1</option>
+                            <option value="quan2">Quận 2</option>
+                            <option value="quan3">Quận 3</option>
+                            <option value="quan4">Quận 4</option>
+                            <option value="quan5">Quận 5</option>
+                            <option value="quan6">Quận 6</option>
+                            <option value="quan7">Quận 7</option>
+                            <option value="Otherquan">Khác...</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <a onclick="document.getElementById('time').focus()"> <label> Thời gian</label></a> </td>
+                    <td>
+                        <input type="date" name="date" id="time" value="2015-04-09">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Đặt hàng" onclick="return formValidation();" />
+                        <input type="reset" value="Hủy">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>-->
+
+    <div class="container" style="background-color:powderblue ">
+        <form class="form-horizontal" name='registration' onsubmit="return formValidation();">
+            
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                <div class="col-sm-4">
+                    <h2> Đặt hàng </h2>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">Họ và tên</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Họ và tên">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">Giới tính</label>
+                <div class="col-sm-4">
+                    <label for="male">Nam</label>
+                    <input type="radio" name="sex" id="male" value="male">
+                    <label for="female">Nữ</label>
+                    <input type="radio" name="sex" id="female" value="female">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Email</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="inputPassword3" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Địa chỉ</label>
+                <div class="col-sm-4">
+                    <select id="city">
+                        <option value="saigon">Hồ Chí Minh</option>
+                    </select>
+                    <select id="icity">
+                        <option value="quan1">Quận 1</option>
+                        <option value="quan2">Quận 2</option>
+                        <option value="quan3">Quận 3</option>
+                        <option value="quan4">Quận 4</option>
+                        <option value="quan5">Quận 5</option>
+                        <option value="quan6">Quận 6</option>
+                        <option value="quan7">Quận 7</option>
+                        <option value="Otherquan">Khác...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword4" class="col-sm-4 control-label">Thời gian</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="inputPassword4" placeholder="Thời gian" value="2015-04-09">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Chọn đặt hàng</label>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-primary" value="Đặt hàng" onclick="return formValidation();" />
+                </div>
+                <div class="col-sm-2">
+                    <input type="reset" class="btn btn-danger" value="Hủy">
+                </div>
+
+            </div>
+
+            
+        </form>
+    </div>
+
+</body>
+</html>
